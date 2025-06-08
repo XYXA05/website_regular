@@ -1,9 +1,19 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'https://79cf-217-31-72-114.ngrok-free.app' });
+const BASE_URL = axios.create({ baseURL: 'https://79cf-217-31-72-114.ngrok-free.app' });
 
-export const fetchApartments = () =>
-  API.get('/get_orders_and_photo_all/').then(res => res.data);
+export const API = axios.create({
+  baseURL: BASE_URL,
+  headers: {
+    // ngrok free-plan: skip the HTML warning page
+    'ngrok-skip-browser-warning': 'true',
+  },
+})
+
+export async function fetchApartments() {
+  const res = await API.get('/get_orders_and_photo_all/')
+  return res.data
+}
 
 export const fetchApartmentById = id =>
   API.get(`/get_apartment_and_photo/${id}`).then(res => res.data);

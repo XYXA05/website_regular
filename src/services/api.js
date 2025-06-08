@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'http://localhost:8000' });
+const API = axios.create({ baseURL: 'https://79cf-217-31-72-114.ngrok-free.app' });
 
 export const fetchApartments = () =>
   API.get('/get_orders_and_photo_all/').then(res => res.data);

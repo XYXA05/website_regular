@@ -1,6 +1,8 @@
+// api.js
 import axios from 'axios';
 
-const BASE_URL = axios.create({ baseURL: 'https://79cf-217-31-72-114.ngrok-free.app' });
+// Point this at your ngrok URL as a plain string:
+const BASE_URL = 'https://79cf-217-31-72-114.ngrok-free.app'
 
 export const API = axios.create({
   baseURL: BASE_URL,
@@ -15,8 +17,11 @@ export async function fetchApartments() {
   return res.data
 }
 
-export const fetchApartmentById = id =>
-  API.get(`/get_apartment_and_photo/${id}`).then(res => res.data);
+export const fetchApartmentById = (id) =>
+  API.get(`/get_apartment_and_photo/${id}`)
+     .then(res => res.data)
 
 export const submitContact = (data) =>
-  API.post('/orders/', data).then(res => res.data);
+  API.post('/orders/', data)
+     .then(res => res.data)
+
